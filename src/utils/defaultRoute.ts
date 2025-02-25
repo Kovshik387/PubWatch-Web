@@ -1,3 +1,3 @@
-export const defaultUri = "http://exchangevolute.ru/api/";
+export const defaultUri = "https://exchangevolute.ru/api/";
 
 export default defaultUri;
