@@ -14,7 +14,7 @@ export default defineConfig({
       }
     ))
   },
-  base: "/",
+  // base: "/",
   // preview: {
   //   port: 3000,
   //   strictPort: true,
