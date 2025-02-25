@@ -134,7 +134,7 @@ export default function ProfilePage() {
                     <>
                         <Row>
                             <Col sm="auto">
-                                <img onClick={handleShowModal} style={avatarStyle} src={account?.image == "" ? "./Default.png" : account?.image}></img>
+                                <img onClick={handleShowModal} style={avatarStyle} src={account?.image == "" ? "/Default.png" : account?.image}></img>
                             </Col>
                             <Col>
                                 <Row>
