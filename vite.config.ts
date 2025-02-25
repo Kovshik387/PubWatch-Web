@@ -15,13 +15,13 @@ export default defineConfig({
     ))
   },
   base: "/",
-  preview: {
-    port: 3000,
-    strictPort: true,
-  },
+  // preview: {
+  //   port: 3000,
+  //   strictPort: true,
+  // },
   server: {
-    port: 3000,
-    strictPort: true,
+    // port: 3000,
+    // strictPort: true,
     host: "0.0.0.0",
   },
 })
