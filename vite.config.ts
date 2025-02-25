@@ -20,8 +20,8 @@ export default defineConfig({
   //   strictPort: true,
   // },
   server: {
-    // port: 3000,
-    // strictPort: true,
+    port: 3000,
+    strictPort: true,
     host: "0.0.0.0",
   },
 })
