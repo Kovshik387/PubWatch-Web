@@ -1,0 +1,45 @@
+networks:
+  exchange-dev:
+    driver: bridge
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+    - "80:80"
+    restart: always
+    networks: 
+    -  exchange-dev
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d/:/etc/nginx/conf.d/:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+    depends_on:
+        - frontend
+
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    depends_on:
+    - nginx
+    container_name: certbot
+    volumes:
+    -  ./certbot/www:/var/www/certbot/:rw
+    - ./certbot/conf/:/etc/letsencrypt/:rw
+    networks:
+    - exchange-dev 
+
+  frontend:
+    image: ${DOCKER_REGISTRY-}frontend
+    container_name: frontend
+    build:
+      context: ./Systems/Web/exchange-rates/
+      dockerfile: Dockerfile
+    networks:
+      - exchange-dev
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
